@@ -4,20 +4,19 @@ import unittest.mock as mock
 from src.util.helpers import ValidationHelper
 
 
-@pytest.mark.unit
-def test_ageValidation():
-    
+@pytest.mark.parametrize('age, expected', [
+    (-1, "invalid"), (0, "underaged"), (1, "underaged"),
+    (17, "underaged"), (18, "valid"), (19, "valid"),
+    (119, "valid"), (120, "valid"), (121, "invalid")
+])
 
-    #create a mock object
-    mockedusercontroller = mock.MagicMock()
-    mockedusercontroller.get.return_value = {'age': 18}
+@pytest.mark.demo
+def test_ageValidation(age, expected):
 
-    obj = ValidationHelper(mockedusercontroller)
-    result = obj.validateAge(userid=1)
+    mockedUserController = mock.MagicMock()
+    mockedUserController.get.return_value = {"age": age}
 
-    assert result == "underaged"
-    
-    #test validate age mocked object
+    obj = ValidationHelper(mockedUserController)
+    result = obj.validateAge(None)
 
-# @pytest.mark.unit
-# def
+    assert result == expected
