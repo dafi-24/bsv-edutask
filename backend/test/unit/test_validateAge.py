@@ -10,7 +10,7 @@ from src.util.helpers import ValidationHelper
     (119, "valid"), (120, "valid"), (121, "invalid")
 ])
 
-@pytest.mark.demo
+@pytest.mark.unit
 def test_ageValidation(age, expected):
 
     mockedUserController = mock.MagicMock()
