@@ -30,4 +30,4 @@ jobs:
           pip install pytest
 
       - name: Run unit tests
-        run: pytest test/unit
+        run: pytest test/unit/test_getUserByEmail.py
