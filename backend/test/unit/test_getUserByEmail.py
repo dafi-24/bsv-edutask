@@ -22,7 +22,7 @@ def test_checkmail_true(obj):
 def test_checkmail_None():
 
     mockedController = mock.MagicMock()
-    mockedController.find.return_value = [None]
+    mockedController.find.return_value = []
 
     controller = UserController(mockedController)
 
