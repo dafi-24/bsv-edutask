@@ -85,7 +85,7 @@ def test_no_mail(obj):
 def test_exception():
 
     mockedController = mock.MagicMock()
-    mockedController.find.return_value = 1
+    mockedController.find.return_value = Exception
 
     controller = UserController(mockedController)
 
